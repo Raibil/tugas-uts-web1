@@ -2,7 +2,7 @@
 > Project Ujian Tengah Semester (UTS) — Pemrograman Web 1
 
 -------
-### DATA DIRI
+### DATA DIRI ###
 - Nama  Raihan Nabil Mas'ud
 - NIM   312510094
 - Kelas I.25.1A
