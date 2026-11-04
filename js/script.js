@@ -1,15 +1,3 @@
-/* =====================================================
-   script.js — Logika aplikasi Pustaka Nusantara
-   Data utama berasal dari data.js (disiapkan dosen):
-   dataPengguna, dataKatalogBuku, dataTracking
-
-   Bagian:
-   1. Konfigurasi, konstanta & utilitas DOM
-   2. Akses data (data.js + localStorage)
-   3. Komponen UI (modal, dialog, toast, validasi)
-   4. Autentikasi & inisialisasi global
-   5. Halaman: login, dashboard, stok, checkout, tracking
-   ===================================================== */
 "use strict";
 
 /* ============ 1. KONFIGURASI & UTILITAS ============ */
