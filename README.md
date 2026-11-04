@@ -3,7 +3,9 @@
 
 -------
 ### DATA DIRI
-Nama Raihan Nabil Mas'ud / NIM 312510094
+- Nama  Raihan Nabil Mas'ud
+- NIM   312510094
+- Kelas I.25.1A
 
 ### 1. Deskripsi Project
 Aplikasi Pemesanan Buku Online merupakan aplikasi web sederhana yang dirancang untuk mensimulasikan proses pemesanan buku pada sebuah toko online. Project ini berfokus pada pengembangan sisi front-end menggunakan HTML, CSS, dan JavaScript.
