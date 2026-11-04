@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracking Pengiriman — Pustaka Nusantara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="tracking">
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="dashboard.html"><span class="brand__mark" aria-hidden="true">P</span><span class="brand__name">Pustaka<em>Nusantara</em></span></a>
+      <nav class="topnav" aria-label="Navigasi utama">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="stok.html">Katalog</a>
+        <a href="checkout.html">Pemesanan</a>
+        <a href="tracking.html">Tracking</a>
+      </nav>
+      <div class="topbar__user">
+        <span>Halo, <strong data-nama-user></strong> <span class="badge badge--info" data-role-user></span></span>
+        <button type="button" id="btnLogout" class="btn btn--ghost btn--sm"><svg class="icon" aria-hidden="true"><use href="#i-logout"/></svg>Keluar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">Pengiriman</p>
+        <h1>Informasi Pengiriman</h1>
+        <p>Masukkan Nomor Delivery Order untuk melihat status paket.</p>
+      </div>
+    </div>
+
+    <section class="card" aria-label="Pencarian nomor DO">
+      <form id="formCari" class="search-card" novalidate>
+        <div class="field">
+          <label for="noDO" class="sr-only">Nomor Delivery Order</label>
+          <input type="text" id="noDO" placeholder="Contoh: 20230012" inputmode="numeric" autocomplete="off" aria-describedby="noDO-error">
+          <p class="field__error" id="noDO-error" role="alert"></p>
+        </div>
+        <button type="submit" class="btn btn--primary"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>Cari</button>
+      </form>
+      <div class="chips"><span>Coba nomor:</span><span id="contohDO" style="display: contents;"></span></div>
+    </section>
+
+    <section class="card placeholder-box" id="petunjuk">
+      <svg class="icon" style="width: 2.4rem; height: 2.4rem;" aria-hidden="true"><use href="#i-truck"/></svg>
+      <p style="margin: .5rem 0 0;">Hasil pelacakan akan tampil di sini.</p>
+    </section>
+
+    <section class="card" id="hasil" aria-live="polite" hidden>
+      <div class="result-head">
+        <div>
+          <p class="eyebrow">Nama pemesan</p>
+          <h2 id="hNama"></h2>
+          <p class="muted" style="margin: 0;">No. DO <span class="mono" id="hNoDO"></span></p>
+        </div>
+        <span id="hStatus" class="badge"></span>
+      </div>
+
+      <div id="progressBar" class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress__fill"></div>
+      </div>
+      <ol class="stepper" id="stepper" aria-label="Tahapan pengiriman"></ol>
+
+      <dl class="details">
+        <div><dt>Ekspedisi</dt><dd id="dEkspedisi"></dd></div>
+        <div><dt>Tanggal kirim</dt><dd id="dTanggal"></dd></div>
+        <div><dt>Paket</dt><dd id="dPaket"></dd></div>
+        <div><dt>Total pembayaran</dt><dd id="dTotal"></dd></div>
+        <div id="wrapMetode"><dt>Metode pembayaran</dt><dd id="dMetode"></dd></div>
+        <div id="wrapAlamat"><dt>Alamat tujuan</dt><dd id="dAlamat"></dd></div>
+      </dl>
+
+      <div class="layout-2" id="layoutHasil">
+        <div id="blokRincian">
+          <h3>Rincian pesanan</h3>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th scope="col">Buku</th><th scope="col" class="num">Qty</th><th scope="col" class="num">Harga</th><th scope="col" class="num">Subtotal</th></tr></thead>
+              <tbody id="tbodyItem"></tbody>
+              <tfoot>
+                <tr><td colspan="3">Subtotal buku</td><td class="num" id="fSubtotal"></td></tr>
+                <tr><td colspan="3">Ongkos kirim</td><td class="num" id="fOngkir"></td></tr>
+                <tr><td colspan="3">Total pembayaran</td><td class="num" id="fTotal"></td></tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>Riwayat perjalanan</h3>
+          <ul class="timeline" id="timeline"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Pustaka Nusantara · Tugas UTS Pemrograman Web 1</footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

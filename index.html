@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login Pustaka Nusantara — toko buku online.">
+  <title>Login — Pustaka Nusantara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+
+  <main class="auth">
+    <section class="auth__hero" aria-label="Tentang Pustaka Nusantara">
+      <a class="brand brand--light" href="index.html" aria-label="Pustaka Nusantara">
+        <span class="brand__mark" aria-hidden="true">P</span>
+        <span class="brand__name">Pustaka<em>Nusantara</em></span>
+      </a>
+      <div class="auth__copy">
+        <p class="eyebrow" style="color: var(--gold);">Toko buku online</p>
+        <h1>Dari katalog sampai ke depan pintu pembaca.</h1>
+        <p>Kelola stok, buat pesanan, dan pantau pengiriman buku dalam satu tempat yang rapi.</p>
+      </div>
+      <!-- Dekorasi rak buku: gaya inline (CSS inline) -->
+      <div class="spines" aria-hidden="true">
+        <span style="--h: 120px; --c: #c4552f;"></span>
+        <span style="--h: 165px; --c: #d9a441;"></span>
+        <span style="--h: 140px; --c: #f5f0e6;"></span>
+        <span style="--h: 180px; --c: #2e7d6a;"></span>
+        <span style="--h: 110px; --c: #c4552f;"></span>
+        <span style="--h: 155px; --c: #8bb7a8;"></span>
+        <span style="--h: 130px; --c: #d9a441;"></span>
+        <span style="--h: 170px; --c: #f5f0e6;"></span>
+        <span style="--h: 100px; --c: #c4552f;"></span>
+      </div>
+    </section>
+
+    <section class="auth__panel" aria-labelledby="judulLogin">
+      <div class="card auth__card">
+        <h2 id="judulLogin">Selamat datang kembali</h2>
+        <p class="muted">Masuk untuk mengelola toko buku Anda.</p>
+
+        <form id="formLogin" novalidate>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="nama@email.com" autocomplete="username" aria-describedby="email-error">
+            <p class="field__error" id="email-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <input type="password" id="password" name="password" placeholder="Masukkan password" autocomplete="current-password" aria-describedby="password-error">
+              <button type="button" id="togglePassword" class="btn btn--ghost btn--icon" aria-label="Tampilkan password"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button>
+            </div>
+            <p class="field__error" id="password-error" role="alert"></p>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block">Login</button>
+        </form>
+
+        <div class="auth__actions">
+          <button type="button" class="btn btn--outline" data-buka="modalLupa">Lupa Password</button>
+          <button type="button" class="btn btn--outline" data-buka="modalDaftar">Daftar</button>
+        </div>
+
+        <aside class="demo-box" aria-label="Akun demo">
+          <strong>Akun demo:</strong> <code>rina@gmail.com</code> / <code>rina123</code> (User)<br>
+          <code>siti@gmail.com</code> / <code>siti123</code> (Admin)
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal: Lupa Password -->
+  <div class="modal" id="modalLupa" role="dialog" aria-modal="true" aria-labelledby="judulLupa" hidden>
+    <div class="modal__box">
+      <div class="modal__head">
+        <h2 id="judulLupa">Lupa Password</h2>
+        <button type="button" class="modal__close" data-tutup aria-label="Tutup"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+      </div>
+      <p class="muted">Masukkan email akun Anda. Kami akan mengirim instruksi untuk mengatur ulang password.</p>
+      <form id="formLupa" novalidate>
+        <div class="field">
+          <label for="emailLupa">Email terdaftar</label>
+          <input type="email" id="emailLupa" placeholder="nama@email.com">
+          <p class="field__error" role="alert"></p>
+        </div>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--ghost" data-tutup>Batal</button>
+          <button type="submit" class="btn btn--primary">Kirim Instruksi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Daftar -->
+  <div class="modal" id="modalDaftar" role="dialog" aria-modal="true" aria-labelledby="judulDaftar" hidden>
+    <div class="modal__box">
+      <div class="modal__head">
+        <h2 id="judulDaftar">Daftar Akun Baru</h2>
+        <button type="button" class="modal__close" data-tutup aria-label="Tutup"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+      </div>
+      <form id="formDaftar" novalidate>
+        <div class="field">
+          <label for="namaDaftar">Nama lengkap</label>
+          <input type="text" id="namaDaftar" autocomplete="name">
+          <p class="field__error" role="alert"></p>
+        </div>
+        <div class="field">
+          <label for="emailDaftar">Email</label>
+          <input type="email" id="emailDaftar" placeholder="nama@email.com" autocomplete="email">
+          <p class="field__error" role="alert"></p>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="passDaftar">Password</label>
+            <input type="password" id="passDaftar" autocomplete="new-password">
+            <p class="field__error" role="alert"></p>
+          </div>
+          <div class="field">
+            <label for="passKonfirmasi">Ulangi password</label>
+            <input type="password" id="passKonfirmasi" autocomplete="new-password">
+            <p class="field__error" role="alert"></p>
+          </div>
+        </div>
+        <p class="field__hint">Minimal 6 karakter, kombinasi huruf dan angka.</p>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--ghost" data-tutup>Batal</button>
+          <button type="submit" class="btn btn--primary">Buat Akun</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

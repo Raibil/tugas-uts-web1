@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Pustaka Nusantara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS internal: gaya khusus banner sapaan halaman dashboard -->
+  <style>
+    .greeting {
+      position: relative; overflow: hidden; color: #fff; margin-bottom: 1.5rem;
+      background: linear-gradient(120deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 18px; padding: 2rem 2rem 1.8rem;
+    }
+    .greeting::after {
+      content: ""; position: absolute; right: -60px; top: -80px; width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(217, 164, 65, .4), transparent 70%);
+    }
+    .greeting h1 { margin: 0 0 .3rem; position: relative; z-index: 1; }
+    .greeting p { margin: 0; color: rgba(255, 255, 255, .8); position: relative; z-index: 1; font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body data-page="dashboard">
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="dashboard.html"><span class="brand__mark" aria-hidden="true">P</span><span class="brand__name">Pustaka<em>Nusantara</em></span></a>
+      <nav class="topnav" aria-label="Navigasi utama">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="stok.html">Katalog</a>
+        <a href="checkout.html">Pemesanan</a>
+        <a href="tracking.html">Tracking</a>
+      </nav>
+      <div class="topbar__user">
+        <span>Halo, <strong data-nama-user></strong> <span class="badge badge--info" data-role-user></span></span>
+        <button type="button" id="btnLogout" class="btn btn--ghost btn--sm"><svg class="icon" aria-hidden="true"><use href="#i-logout"/></svg>Keluar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="greeting" aria-live="polite">
+      <h1 id="salam">Selamat datang!</h1>
+      <p id="tanggalWaktu"></p>
+    </section>
+
+    <section aria-label="Ringkasan toko" class="stats">
+      <div class="stat"><div class="stat__label">Judul buku</div><div class="stat__value" id="statJudul">0</div></div>
+      <div class="stat"><div class="stat__label">Total stok</div><div class="stat__value" id="statStok">0</div></div>
+      <div class="stat"><div class="stat__label">Total pesanan</div><div class="stat__value" id="statPesanan">0</div></div>
+      <div class="stat stat--accent"><div class="stat__label">Total pendapatan</div><div class="stat__value" id="statPendapatan">Rp0</div></div>
+    </section>
+
+    <section aria-labelledby="judulMenu">
+      <h2 id="judulMenu">Menu utama</h2>
+      <div class="menu-grid">
+        <a class="menu-card" href="stok.html">
+          <span class="menu-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
+          <h3>Informasi Stok / Katalog</h3>
+          <p>Lihat daftar buku, cari, dan tambah stok baru.</p>
+          <span class="menu-card__go">Buka katalog →</span>
+        </a>
+        <a class="menu-card" href="tracking.html">
+          <span class="menu-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg></span>
+          <h3>Tracking Pengiriman</h3>
+          <p>Lacak status paket dengan nomor Delivery Order.</p>
+          <span class="menu-card__go">Lacak paket →</span>
+        </a>
+        <button type="button" class="menu-card" id="btnLaporan">
+          <span class="menu-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></span>
+          <h3>Laporan Pemesanan</h3>
+          <p>Rekap jumlah pesanan dan pendapatan per ekspedisi.</p>
+          <span class="menu-card__go">Lihat laporan →</span>
+        </button>
+        <button type="button" class="menu-card" id="btnHistory">
+          <span class="menu-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span>
+          <h3>History Transaksi</h3>
+          <p>Riwayat seluruh pesanan beserta statusnya.</p>
+          <span class="menu-card__go">Lihat riwayat →</span>
+        </button>
+        <a class="menu-card" href="checkout.html">
+          <span class="menu-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg></span>
+          <h3>Buat Pesanan Baru</h3>
+          <p>Susun keranjang, isi data pemesan, dan bayar.</p>
+          <span class="menu-card__go">Mulai memesan →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Pustaka Nusantara · Tugas UTS Pemrograman Web 1</footer>
+
+  <!-- Modal: Laporan Pemesanan -->
+  <div class="modal" id="modalLaporan" role="dialog" aria-modal="true" aria-labelledby="judulLaporan" hidden>
+    <div class="modal__box modal__box--lg">
+      <div class="modal__head">
+        <h2 id="judulLaporan">Laporan Pemesanan</h2>
+        <button type="button" class="modal__close" data-tutup aria-label="Tutup"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+      </div>
+      <div id="isiLaporan"></div>
+    </div>
+  </div>
+
+  <!-- Modal: History Transaksi -->
+  <div class="modal" id="modalHistory" role="dialog" aria-modal="true" aria-labelledby="judulHistory" hidden>
+    <div class="modal__box modal__box--lg">
+      <div class="modal__head">
+        <h2 id="judulHistory">History Transaksi</h2>
+        <button type="button" class="modal__close" data-tutup aria-label="Tutup"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+      </div>
+      <div class="toolbar">
+        <div class="search field">
+          <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+          <label for="cariHistory" class="sr-only">Cari transaksi</label>
+          <input type="search" id="cariHistory" placeholder="Cari nomor DO atau nama pemesan">
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>No. DO</th><th>Tanggal</th><th>Pemesan</th><th class="num">Total</th><th class="hide-sm">Ekspedisi</th><th>Status</th><th><span class="sr-only">Aksi</span></th></tr></thead>
+          <tbody id="tbodyHistory"></tbody>
+        </table>
+        <p class="empty" id="kosongHistory" hidden>Tidak ada transaksi yang cocok.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
