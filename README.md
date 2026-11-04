@@ -1,7 +1,6 @@
 ### Aplikasi Pemesanan Buku Online
 > Project Ujian Tengah Semester (UTS) — Pemrograman Web 1
 
--------------------------------------------------
 ### DATA DIRI
 Nama    Raihan Nabil Mas'ud
 NIM     312510094
