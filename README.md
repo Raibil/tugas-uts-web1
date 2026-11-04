@@ -125,20 +125,4 @@ Video berisi penjelasan mengenai sistematika pembuatan, alur penggunaan, fitur a
 Link YouTube:  
 Masukkan link video demonstrasi YouTube di sini
 > Ganti tautan di atas dengan URL video YouTube project yang sebenarnya.
-
-### 8. Dokumentasi Screenshot
-Letakkan seluruh tangkapan layar pada folder `screenshots/` di repository. Pastikan:
-Screenshot berasal dari aplikasi yang benar-benar dijalankan.
-Gambar memperlihatkan halaman atau proses yang sedang dijelaskan.
-Nama file gambar sesuai dengan tautan gambar di README.
-Screenshot tidak tertinggal atau belum diunggah ketika repository dikumpulkan.
-
-### 9. Informasi Project
-Keterangan	Informasi
-Nama Project	Aplikasi Pemesanan Buku Online
-Mata Kuliah	Pemrograman Web 1
-Jenis Tugas	Ujian Tengah Semester (UTS)
-Pengembangan	Front-end
-Bahasa	HTML, CSS, JavaScript
-Sumber Data	Data dummy JavaScript
 ---
